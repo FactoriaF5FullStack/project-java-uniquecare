@@ -1,7 +1,9 @@
 package org.factoriaf5.uniquecare.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
+import org.factoriaf5.uniquecare.facility.Facility;
 import org.factoriaf5.uniquecare.role.Role;
 
 import javax.persistence.*;
@@ -27,11 +29,16 @@ public class User {
     private String email;
 
     private String password;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+
+    @OneToMany(mappedBy = "owner")
+    @JsonIgnoreProperties("owner")
+    private Set<Facility> facilities = new HashSet<>();
 
     private Timestamp createdAt = new Timestamp(System.currentTimeMillis());
     public User() {
