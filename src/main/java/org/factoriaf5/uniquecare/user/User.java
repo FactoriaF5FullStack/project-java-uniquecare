@@ -3,7 +3,7 @@ package org.factoriaf5.uniquecare.user;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
-import org.factoriaf5.uniquecare.facility.Facility;
+import org.factoriaf5.uniquecare.service.Service;
 import org.factoriaf5.uniquecare.role.Role;
 
 import javax.persistence.*;
@@ -38,7 +38,7 @@ public class User {
 
     @OneToMany(mappedBy = "owner")
     @JsonIgnoreProperties("owner")
-    private Set<Facility> facilities = new HashSet<>();
+    private Set<Service> facilities = new HashSet<>();
 
     private Timestamp createdAt = new Timestamp(System.currentTimeMillis());
     public User() {
@@ -47,5 +47,13 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+    }
+
+    public void addFacility(Service facility) {
+        this.getFacilities().add(facility);
+    }
+
+    public void removeFacility(Service facility) {
+        this.getFacilities().remove(facility);
     }
 }

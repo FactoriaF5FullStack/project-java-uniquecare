@@ -1,6 +1,5 @@
-package org.factoriaf5.uniquecare.facility;
+package org.factoriaf5.uniquecare.service;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.factoriaf5.uniquecare.user.User;
@@ -14,7 +13,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Facility {
+public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class FacilityRequest {
+public class ServiceRequest {
     private String name;
     private String description;
     private double basePrice;
